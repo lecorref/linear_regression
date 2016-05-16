@@ -1,23 +1,22 @@
 [package]
 name = "linear_regression"
-version = "0.0.1"
-authors = ["adjivas <adjivas@users.noreply.github.com>"]
+version = "0.1"
+authors = ["frale-co <lecorre.f@gmail.com>"]
 description = ""
-documentation = "https://adjivas.github.io/linear_regression"
-repository = "https://github.com/adjivas/linear_regression.git"
-readme = "README.md"
-keywords = ["visualize", "linear", "regression"]
-license = "MIT OR Apache-2.0"
 
 [[bin]]
-name = "visualizedata"
-path = "src/bin/visualizedata.rs"
+name = "predict"
+path = "src/predict.rs"
 doc = false
 
 [[bin]]
-name = "linearfunction"
-path = "src/bin/linearfunction.rs"
+name = "train"
+path = "src/train.rs"
 doc = false
+
+[dependencies]
+clap = "2"
+csv = "0.14"
 
 [features]
 unstable = [] # for travis-cargo
