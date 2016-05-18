@@ -1,6 +1,6 @@
 [package]
 name = "linear_regression"
-version = "0.1"
+version = "0.0.1"
 authors = ["frale-co <lecorre.f@gmail.com>"]
 description = ""
 
