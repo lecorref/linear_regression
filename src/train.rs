@@ -35,12 +35,8 @@ fn main() {
         .get_matches();
     let mut rdr = csv::Reader::from_file(String::from(matches.value_of("DATASET").unwrap())).unwrap();
     let rows = rdr.decode().collect::<csv::Result<Vec<Row>>>().unwrap();
-
     let &(maxx, _) = rows.iter().max_by_key(|&&(x, _)| x as i32).unwrap();
     let &(minx, _) = rows.iter().min_by_key(|&&(x, _)| x as i32).unwrap();
-
- //   let &(_, maxy) = rows.iter().max_by_key(|&&(_, x)| x as i32).unwrap();
- //   let &(_, miny) = rows.iter().min_by_key(|&&(_, x)| x as i32).unwrap();
 
     let scaledrows = rows.iter().map(|&(x, y)| ((x - minx) / (maxx - minx), y)).collect::<Vec<Row>>();
     let len: f64 = rows.len() as f64;
@@ -49,7 +45,7 @@ fn main() {
     let mut theta0: f64 = 0.0;
     let mut theta1: f64 = 0.0;
 
-    for _ in 1..1000 {
+    for _ in 1..10000 {
         let (test, test1) = scaledrows.iter().fold((0.0, 0.0), |(x, y), &(km, price)|{
             let theta = ((theta0 + theta1 * km) - price) / len;
             (x + theta, y + theta * km)

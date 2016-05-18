@@ -11,7 +11,7 @@ fn read_file(mut file: std::fs::File, mileage: f64) -> (){
     let theta1: f64 = vec[1].trim().parse().expect("Theta1 is not a number");
     let min: f64 = vec[2].trim().parse().expect("Theta0 is not a number");
     let max: f64 = vec[3].trim().parse().expect("Theta1 is not a number");
-    println!("Price: {}", theta0 + (theta1 * (mileage - min) / (max - min)));
+    println!("Price: {:.*}", 2, theta0 + (theta1 * (mileage - min) / (max - min)));
 }
 
 fn main() {
